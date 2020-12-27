@@ -1,9 +1,14 @@
 var area = document.getElementById('area');
 var cell = document.getElementsByClassName('cell');
 var currentPlayer = document.getElementById('curPlyr');
+var winX = document.getElementById('xWin');
+var winO = document.getElementById('oWin');
+var reset = document.getElementById('reset');
 
 var winer;
 var player = 'x';
+var xCount = 0;
+var oCount = 0;
 var winIndex = [
     [1,2,3],
     [4,5,6],
@@ -82,8 +87,31 @@ function restart(text) {
         player = "x";
     }
     player = player == "x" ? "o" : "x";
+    if(text != 'Ничья'){
+        if (player == "x"){
+            xCount++
+        }else{
+            oCount++
+        }
+    }
     for(var i = 0; i < cell.length; i++){
         cell[i].innerHTML = '';
     }
+    winX.innerHTML = oCount.toString();
+    winO.innerHTML = xCount.toString();
     alert(text);
+}
+
+reset.addEventListener('click',resetClick, false);
+
+function resetClick(){
+    alert('Вы уверены, что хотите сбросить данные?')
+    player = "x"
+    xCount = 0;
+    oCount = 0;
+    winX.innerHTML = oCount.toString();
+    winO.innerHTML = xCount.toString();
+    for(var i = 0; i < cell.length; i++){
+        cell[i].innerHTML = '';
+    }
 }
