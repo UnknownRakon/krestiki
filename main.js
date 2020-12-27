@@ -78,6 +78,9 @@ function checkWin(data) {
 }
 
 function restart(text) {
+    if(text == 'Ничья'){
+        player = "x";
+    }
     player = player == "x" ? "o" : "x";
     for(var i = 0; i < cell.length; i++){
         cell[i].innerHTML = '';
