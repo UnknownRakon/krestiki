@@ -2,6 +2,7 @@ var area = document.getElementById('area');
 var cell = document.getElementsByClassName('cell');
 var currentPlayer = document.getElementById('curPlyr');
 
+var winer;
 var player = 'x';
 var winIndex = [
     [1,2,3],
@@ -43,6 +44,7 @@ function cellClick() {
     }
 
     if(checkWin(data)) {
+        console.log(player);
         restart('Выиграл: ' + player);
     }else{
         var draw = true;
@@ -50,22 +52,12 @@ function cellClick() {
             if(cell[i].innerHTML == '') draw = false;
         }
         if (draw){
-            player = "x";
             restart('Ничья');
         }
     }
     
-    if (player == "x"){
-        currentPlayer.innerHTML = player.toUpperCase();
-        player = "o"
-        document.getElementsByClassName("cell").classList.add('green');
-        document.getElementsByClassName("cell").classList.remove('red');
-    }else{
-        currentPlayer.innerHTML = player.toUpperCase();
-        player = "x"
-        document.getElementsByClassName("cell").classList.add('red');
-        document.getElementsByClassName("cell").classList.remove('green')
-    }
+    player = player == "x" ? "o" : "x";
+    currentPlayer.innerHTML = player.toUpperCase();
 }
 
 function checkWin(data) {
@@ -86,8 +78,9 @@ function checkWin(data) {
 }
 
 function restart(text) {
-    alert(text);
+    player = player == "x" ? "o" : "x";
     for(var i = 0; i < cell.length; i++){
         cell[i].innerHTML = '';
     }
+    alert(text);
 }
