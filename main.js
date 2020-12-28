@@ -94,15 +94,19 @@ function restart(text) {
             oCount++
         }
     }
-    for(var i = 0; i < cell.length; i++){
-        cell[i].innerHTML = '';
-    }
     winX.innerHTML = oCount.toString();
     winO.innerHTML = xCount.toString();
+    setTimeout(() => cleaner(), 1000);
     alert(text);
 }
 
 reset.addEventListener('click',resetClick, false);
+
+function cleaner(){
+    for(var i = 0; i < cell.length; i++){
+        cell[i].innerHTML = '';
+    }
+}
 
 function resetClick(){
     alert('Вы уверены, что хотите сбросить данные?')
