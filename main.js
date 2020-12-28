@@ -10,6 +10,7 @@ var newGame = document.getElementById('new');
 var player = 'x';
 var xCount = 0;
 var oCount = 0;
+var game = true;
 var winIndex = [
     [1,2,3],
     [4,5,6],
@@ -34,7 +35,7 @@ currentPlayer.innerHTML = player.toUpperCase();
 
 function cellClick() {
 
-    var data = [];
+    data = [];
 
     if(!this.innerHTML){
         this.innerHTML = player
@@ -50,7 +51,6 @@ function cellClick() {
     }
 
     if(checkWin(data)) {
-        console.log(player);
         restart('Выиграл: ' + player);
     }else{
         var draw = true;
