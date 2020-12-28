@@ -9,7 +9,7 @@
     <body>
         <div class="container">
             <h1 class="text-center mt-4">Крестики нолики</h1>
-            <hr class="my-5">
+            <hr class="my-3">
             <div class='mt-2 row'>
                 <div class="col-6 px-5 py-3 bg-light">
                     <ol>
@@ -28,15 +28,14 @@
                     <h2>Побед у игрока X: <span id="xWin"></span></h2>
                     <h2>Побед у игрока О: <span id="oWin"></span></h2>
                     <button id="reset" type="button" class="btn btn-danger mt-1">Сброс данных</button>
+                    <button id="new" type="button" class="btn btn-info mt-1">Новый раунд</button>
                 </div>
             </div>
-            <!-- <div class="row">
-                <h2 class="p-3 mb-2 bg-success text-white">
-                    Сейчас ходит <span id="curPlyr"></span>
-                </h2>
-            </div> -->
+            <div class="row" id="result">
+                
+            </div>
             <div class="content">
-                <div id="area">
+                <div id="area" class="col-7">
                 </div>
             </div>
         </div>

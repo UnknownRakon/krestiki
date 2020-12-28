@@ -4,8 +4,9 @@ var currentPlayer = document.getElementById('curPlyr');
 var winX = document.getElementById('xWin');
 var winO = document.getElementById('oWin');
 var reset = document.getElementById('reset');
+var result = document.getElementById('result');
+var newGame = document.getElementById('new');
 
-var winer;
 var player = 'x';
 var xCount = 0;
 var oCount = 0;
@@ -96,16 +97,24 @@ function restart(text) {
     }
     winX.innerHTML = oCount.toString();
     winO.innerHTML = xCount.toString();
-    setTimeout(() => cleaner(), 1000);
-    alert(text);
+    winner(text);
+}
+
+function winner(text){
+    result.innerHTML = "<h2 class='col-12 text-center p-3 mb-2 bg-light text-success' id='winner'></h2>";
+    let winner = document.getElementById('winner');
+    winner.innerHTML = text
 }
 
 reset.addEventListener('click',resetClick, false);
+
+newGame.addEventListener('click',cleaner, false);
 
 function cleaner(){
     for(var i = 0; i < cell.length; i++){
         cell[i].innerHTML = '';
     }
+    result.innerHTML = "";
 }
 
 function resetClick(){
