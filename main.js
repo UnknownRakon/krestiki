@@ -104,6 +104,9 @@ function winner(text){
     result.innerHTML = "<h2 class='col-12 text-center p-3 mb-2 bg-light text-success' id='winner'></h2>";
     let winner = document.getElementById('winner');
     winner.innerHTML = text
+    for (var i = 0; i < cell.length; i++) {
+        cell[i].removeEventListener('click',cellClick, false);
+    }
 }
 
 reset.addEventListener('click',resetClick, false);
@@ -115,16 +118,27 @@ function cleaner(){
         cell[i].innerHTML = '';
     }
     result.innerHTML = "";
+    for (var i = 0; i < cell.length; i++) {
+        cell[i].addEventListener('click',cellClick, false);
+    }
 }
 
 function resetClick(){
-    alert('Вы уверены, что хотите сбросить данные?')
-    player = "x"
-    xCount = 0;
-    oCount = 0;
-    winX.innerHTML = oCount.toString();
-    winO.innerHTML = xCount.toString();
-    for(var i = 0; i < cell.length; i++){
-        cell[i].innerHTML = '';
+    let answer = window.confirm("Вы уверены, что хотите сбросить данные?");
+    if (answer) {
+        player = "x"
+        xCount = 0;
+        oCount = 0;
+        winX.innerHTML = oCount.toString();
+        winO.innerHTML = xCount.toString();
+        for(var i = 0; i < cell.length; i++){
+            cell[i].innerHTML = '';
+        }
+        for (var i = 0; i < cell.length; i++) {
+            cell[i].addEventListener('click',cellClick, false);
+        }
+    }
+    else {
+        return
     }
 }
